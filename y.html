@@ -1,0 +1,35 @@
+
+<script>
+
+function f() {
+  //block if no radio is checked
+  var ptrUser = document.getElementById("user")
+  var ptrA = document.getElementById("A")
+  var ptrW = document.getElementById("W")
+  var ptrD = document.getElementById("D")
+  //input fields     .value     string
+  //radio and boxes  .checked   boolean
+
+  //fix to block multiple spaces from being correct input
+  if (!ptrA.checked) {
+    alert('bad');
+    return false;
+  }
+
+  if (ptrUser.value == "") {
+    alert('bad user');
+    return false;
+  }
+}
+
+</script>
+
+<form action="y.php">
+
+<input type=text name="user" id="user" >USER<br><br>
+<input type=radio name="type" id="A" >A<br><br>
+<input type=radio name="type" id="W" >W<br><br>
+<input type=radio name="type" id="D" >D<br><br>
+
+<input type=submit>
+</form>
