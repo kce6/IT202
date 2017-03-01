@@ -1,6 +1,6 @@
 <?php
 
-include (  "account.php"     ) ;
+include (    "account.php"         );
 print "<b>Results from xform.php with data from xform.html</b><br><br>";
 
 ($dbh = mysql_connect ( $hostname, $username, $password ) )
@@ -15,18 +15,38 @@ print "<br>The submitted user is: <b>$user</b><br><br>";
 
 
 
-$s = "SELECT * FROM accounts WHERE user='$user'";
-print "<br>SQL statement used is: $s<br>";
+$userAccount = "SELECT * FROM accounts WHERE user='$user'";
+print "<br>SQL statement used is: $userAccount<br>";
 
-($t = mysql_query($s)) or die (mysql_error());
+($uA = mysql_query($userAccount)) or die (mysql_error());
 
-$num = mysql_num_rows($t);
+$num = mysql_num_rows($uA);
 
-    while ($r = mysql_fetch_array($t)) {
+    while ($r = mysql_fetch_array($uA)) {
          $x = $r["user"];
          $y = $r["current_balance"];
 	 print "<br>User is: <b>$x</b><br>";
    print "Current Balance is: <b>$y</b><br>";
+    };
+    
+print "<br>The number of rows retrieved from the table is: <b>$num</b><br>";
+
+$userTransactions = "SELECT * FROM transactions WHERE user='$user'";
+print "<br>SQL statement used is: $userTransactions<br>";
+
+($uT = mysql_query($userTransactions)) or die (mysql_error());
+
+$num = mysql_num_rows($uT);
+
+    while ($r = mysql_fetch_array($uT)) {
+         $x = $r["user"];
+         $y = $r["type"];
+         $z = $r["amount"];
+         $a = $r["date"];
+	 print "<br>User   is: <b>$x</b><br>";
+   print "<br>Type   is: <b>$y</b><br>";
+   print "<br>Amount is: <b>$z</b><br>";
+   print "<br>Date   is: <b>$a</b><br>";
     };
     
 print "<br>The number of rows retrieved from the table is: <b>$num</b><br>";
