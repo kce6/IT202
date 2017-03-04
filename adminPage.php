@@ -2,7 +2,7 @@
 
 include (    "account.php"            );
 //include (    "form-functions.php"     );
-print "<b>Results from userPage.php with data from login.html</b><br><br>";
+print "<b>Results from adminPage.php with data from login.html</b><br><br>";
 
 ($dbh = mysql_connect ( $hostname, $username, $password ) )
 or die ( "Unable to connect to MySQL database" );
@@ -16,23 +16,36 @@ print "<br>The submitted user is: <b>$user</b><br><br>";
 
 
 
-$userAccount = "SELECT * FROM accounts WHERE user='$user'";
-print "<br>SQL statement used is: $userAccount<br>";
+$userAccounts = "SELECT * FROM accounts";
+print "<br>SQL statement used is: $userAccounts<br>";
 
-($uA = mysql_query($userAccount)) or die (mysql_error());
+($uA = mysql_query($userAccounts)) or die (mysql_error());
 
 $num = mysql_num_rows($uA);
 
     while ($r = mysql_fetch_array($uA)) {
-         $x = $r["user"];
-         $y = $r["current_balance"];
-	 print "<br>User is: <b>$x</b><br>";
-   print "Current Balance is: <b>$y</b><br>";
+         $u = $r["user"];
+         $pw = $r["pass"];
+         $e = $r["email"];
+         $fn = $r["fullname"];
+         $addr = $r["address"];
+         $ib = $r["initial_balance"];
+         $cb = $r["current_balance"];
+         
+         
+	       print "<br>User is: <b>$u</b><br>";
+         print "Password is: <b>$$pw</b><br>";
+         print "Email Address is: <b>$e</b><br>";
+         print "The Full Name is: <b>$fn</b><br>";
+         print "The Mailing Address is: <b>$addr</b><br>";
+         print "The Initial Balance was: <b>$ib</b><br>";
+         print "Current Balance is: <b>$cb</b><br>";
+
     };
     
 print "<br>The number of rows retrieved from the table is: <b>$num</b><br>";
 
-$userTransactions = "SELECT * FROM transactions WHERE user='$user'";
+$userTransactions = "SELECT * FROM transactions";
 print "<br>SQL statement used is: $userTransactions<br>";
 
 ($uT = mysql_query($userTransactions)) or die (mysql_error());
@@ -40,14 +53,14 @@ print "<br>SQL statement used is: $userTransactions<br>";
 $num = mysql_num_rows($uT);
 
     while ($r = mysql_fetch_array($uT)) {
-         $x = $r["user"];
-         $y = $r["type"];
-         $z = $r["amount"];
-         $a = $r["date"];
-	 print "<br>User   is: <b>$x</b><br>";
-   print "<br>Type   is: <b>$y</b><br>";
-   print "<br>Amount is: <b>$z</b><br>";
-   print "<br>Date   is: <b>$a</b><br>";
+         $u = $r["user"];
+         $t = $r["type"];
+         $a = $r["amount"];
+         $d = $r["date"];
+	       print "<br>User is: <b>$u</b><br>";
+         print "<br>Type is: <b>$t</b><br>";
+         print "<br>Amount is: <b>$a</b><br>";
+         print "<br>Date is: <b>$d</b><br>";
     };
     
 print "<br>The number of rows retrieved from the table is: <b>$num</b><br>";
