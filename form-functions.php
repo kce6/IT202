@@ -1,43 +1,23 @@
 <?php
+
 //Get Case Function
 function get_case ( $name, $pass, $amount, $type) {
 
-  if ($type != 'A' && $type != 'D' && $type != 'W') {
-    exit ("invalid choice");
-  }
-  
-  
-  if ($user == null) || ($pass == null) {
-    echo "Username or Password field is blank.  Please enter a both Username and
-  Password";
-  }
- /* 
-  
-  if (is_numeric ($amount) {
-    return $amount;
-  }
-    else {
-    exit ("Invalid amount, please re-enter");
-  }
-  
-  
-  if ($amount < 0) {
-    exit ("no negative numbers");
-  }
-  
-  
-  
-  
-  
-  
-return $type;
+  echo "Inside get_case.<br>"
+  return $type;
+
 }
 
+
+
 function admin ($name, $pass){
-echo "Inside admin. This is just a stub.<br>";
-//exit if bad credentials 
-return;
+
+  echo "Inside admin. This is just a stub.<br>";
+  //exit if bad credentials 
+  return;
+  
 }
+
 
 function user ($name, $pass, $amount, $type) {
   $sqlStatement = "select * from accounts where user = '$name' and pass =
@@ -71,13 +51,6 @@ mysql_query ($s)   or die (mysql_error() ) ;
 // if 'W' then subtract $amount from current_balance of $name in A
 }
 print "<br><br>";
-
-//Check Administrator Credentials
-if (isset($_GET['A'])) {
-  if
-
-
-*/
 
 
 ?>

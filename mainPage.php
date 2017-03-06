@@ -8,7 +8,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
 ini_set('display_errors' , 1);
 
-print"<b>Results from mainPage.php with data from login.html</b><br><br>";
+print"<b>Results from xform.php with data from xform.html</b><br><br>";
 
 ( $dbh = mysql_connect ( $hostname, $username, $password ) )
        or die ( "Unable to connect to MySQL database" );
