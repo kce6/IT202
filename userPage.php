@@ -8,7 +8,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
 ini_set('display_errors' , 1);
 
-print"<b>Results from mainPage.php with data from login.html</b><br><br>";
+print"<b>Results from userPage.php with data from login.html</b><br><br>";
 
 ( $dbh = mysql_connect ( $hostname, $username, $password ) )
        or die ( "Unable to connect to MySQL database" );
@@ -30,17 +30,17 @@ if ($type != 'A') user ($name, $pass, $amount, $type);
 //UPDATE
 
 if($type != 'A' ) update ( $name, $amount, $type);
-$s = "select * from accounts where user = '$name' ";
+
 
 //echo $s1;
-sql ( $type , $name, $s1, $s2 );
-echo $s1;
+sql ( $type , $name, $uA, $uT );
 
-$out1 = get_A($type, $s);
+$out1 = get_A($uA);
 print $out1;
 
-$out1 = get_T( $type, $s1);
+$out1 = get_T($uT);
 print $out1;
 
-//SHOW
+//MAIL
+//Unable to get mail working properly
 ?>
