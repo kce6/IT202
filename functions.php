@@ -1,5 +1,4 @@
 <?php
-
 function get_case($name, $pass, $amount, $type)
 {
     //no type selected
@@ -41,24 +40,17 @@ function get_case($name, $pass, $amount, $type)
     if($type != 'A' && $amount < 0){
         exit("Cannot enter a number less than 0.  Please edit amount and try again.");
     }
-
     return $type;
 }
-
-
 function user ($name, $pass, $amount, $type)
 {
     //inside user
     $user = $_GET [ "user" ];
     print "<br>The submitted user is: <b>$user</b><br><br>";
-
     //only display submitted users information
     $userAccounts = "SELECT * FROM accounts where user = '$name'";
-
     ($uA = mysql_query($userAccounts)) or die (mysql_error());
-
     $num = mysql_num_rows($uA);
-
     while ($r = mysql_fetch_array($uA)) 
     {
       //defining account info
@@ -79,13 +71,11 @@ function user ($name, $pass, $amount, $type)
       print "The Mailing Address is: <b>$addr</b><br>";
       print "The Initial Balance was: <b>$ib</b><br>";
       print "Current Balance is: <b>$cb</b><br>";
-
     };
     //number of rows retrieved
     print "<br>The number of rows retrieved from the table is: <b>$num</b><br>";
     
 }
-
 function admin ($name, $pass)
 {
   //inside admin
@@ -94,7 +84,6 @@ function admin ($name, $pass)
     }
   return;
 }
-
 function update ($name, $amount, $type) 
 {
   //Inside update
@@ -122,18 +111,14 @@ function update ($name, $amount, $type)
   }
   
 }
-
 function sql ($type, $name, &$uA, &$uT ){
   //If admin, display all table information
   if ($type == 'A')
   {
     //accounts table for everyone
     $userAccounts = "SELECT * FROM accounts";
-
     ($uA = mysql_query($userAccounts)) or die (mysql_error());
-
     $num = mysql_num_rows($uA);
-
     while ($r = mysql_fetch_array($uA)) 
     {
       //defining account info
@@ -157,11 +142,8 @@ function sql ($type, $name, &$uA, &$uT ){
     } 
     //transactions table for everyone
     $userTransactions = "SELECT * FROM transactions";
-
     ($uT = mysql_query($userTransactions)) or die (mysql_error());
-
     $num = mysql_num_rows($uT);
-
     while ($r = mysql_fetch_array($uT)) 
     {
       //defining account info
@@ -190,7 +172,6 @@ function sql ($type, $name, &$uA, &$uT ){
     print "<br>SQL statement used is: $uT<br>";
   }
 }
-
 function get_A ( $uA ) 
 {
   $out =  "<br> $uA is:    $uA <br>";
@@ -204,7 +185,6 @@ function get_A ( $uA )
   }
   return $out;
 }
-
 function get_T ($uT){
   $out =  "<br> $uT is:    $uT <br>";
   ($t  = mysql_query($uT)) or die (  mysql_error() );
@@ -218,12 +198,9 @@ function get_T ($uT){
     $out  .= "<br>type is $ty";
     $out  .= "<br>amount is $amt";
     $out  .= "<br>date is $d";
-
   }
   return $out;
 }
-
-
 ?>
 
 
